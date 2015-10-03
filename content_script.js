@@ -5,7 +5,7 @@ var apply_filter = function(pixel) {
 
 var enlighten_filter = function(degree) {
     var sheet = document.styleSheets[0];
-    sheet.addRule("html", "-webkit-filter: hue-rotate("+degree+"deg) contrast(200%) brightness(150%)!important;", 1);
+    sheet.addRule("html", "-webkit-filter: hue-rotate("+degree+"deg) contrast(200%) brightness(110%)!important;", 1);
 };
 
 /**
