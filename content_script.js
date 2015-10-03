@@ -62,4 +62,8 @@ var apply_color_bind = function(c) {
 };
 
 // apply_filter(2);
-apply_color_bind(0);
+chrome.storage.sync.get("click", function(data) {
+        var option = data['click'];
+        apply_color_bind(option);
+    }
+);

@@ -1,28 +1,22 @@
 {
-  "name": "Eye",
-  "short_name": "Eye Description",
-  "icons": {
-    "16" : "fluidicon.png",
-    "24" : "fluidicon.png",
-    "32" : "fluidicon.png",
-    "128": "fluidicon.png"
-  },
-  "version": "0.0.0.1",
   "manifest_version": 2,
-  "permissions": [
-    "tabs"
-  ],
+
+  "name": "Eye",
+  "description": "Eye Description",
+  "version": "0.0.0.1",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["content_script.js"]
     }
   ],
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
   "permissions": [
     "activeTab",
+    "storage",
+    "tabs",
     "https://ajax.googleapis.com/"
   ],
   "description": "Eye Description",
