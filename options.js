@@ -56,7 +56,6 @@ function option_4() {
 }
 
 function end() {
-  isdown = 0;
   var element = document.getElementById("scrollbar");
   var a = element.scrollLeft;
   var b = element.offsetWidth;
@@ -71,7 +70,6 @@ function end() {
 }
 
 function begin() {
-  isdown = 1;
   var element = document.getElementById("scrollbar");
   var a = element.scrollLeft;
   var b = element.offsetWidth;
@@ -80,13 +78,9 @@ function begin() {
 }
 
 function show(c) {
-  diopter = c + 1;
-  var screen = document.getElementById("scrollbar");
-  var a = screen.scrollLeft;
-  var str = "diopter: " + diopter.toString();
+  diopter = c;
   var element = document.getElementById("popup");
-  element.innerHTML = str;
-  element.offsetLeft = a;
+  element.innerHTML = diopter.toString();
 }
 
 document.getElementById("0").addEventListener("click", option_0);
@@ -100,5 +94,4 @@ text = document.getElementById("scrollbar");
 text.onmousedown = begin;
 text.onmouseup = end;
 var click_time = 0;
-var isdown = 0;
 var diopter = 0;
