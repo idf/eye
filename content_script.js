@@ -47,7 +47,8 @@ var apply_color_bind = function(c) {
     '</svg>';
     document.body.appendChild(x);
 
-    var l = ["protanopia", "protanomaly", "deuteranopia", "deuteranomaly", "tritanopia", "tritanomaly", "achromatopsia", "achromatomaly"];
+    //var l = ["protanopia", "protanomaly", "deuteranopia", "deuteranomaly", "tritanopia", "tritanomaly", "achromatopsia", "achromatomaly"];
+    var l = ["protanopia", "deuteranopia", "tritanopia", "achromatopsia"];
     if (isNaN(c)) return;
     if (c >= l.length) return;
     if (c == -1) {
@@ -65,5 +66,11 @@ var apply_color_bind = function(c) {
 chrome.storage.sync.get("click", function(data) {
         var option = data['click'];
         apply_color_bind(option);
+    }
+);
+
+chrome.storage.sync.get("mouseup", function(data) {
+        var pixel = data['mouseup'] * 3;
+        apply_filter(pixel);
     }
 );

@@ -21,34 +21,31 @@
       }
     </style>
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
+    <link href="css/scrollstyle.css" rel="stylesheet">
+    
     <script src="popup.js"></script>
   </head>
   <body>
-    <div style="width:400px" align="center">
-      <div style="height:10px"></div>
-      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-      <button type="button" class="btn btn-primary" id="0">Primary</button>
-
-      <!-- Contextual button for informational alert messages -->
-      <button type="button" class="btn btn-info" id="1">Info</button>
-
-      <!-- Indicates a successful or positive action -->
-      <button type="button" class="btn btn-success" id="2">Success</button>
-
-      <!-- Indicates caution should be taken with this action -->
-      <button type="button" class="btn btn-warning" id="3">Warning</button>
-
-      <!-- Indicates a dangerous or potentially negative action -->
-      <button type="button" class="btn btn-danger" id="4">Danger</button>
-      <div style="height:10px"></div>
+    <div style="width:550px" align="center">
+      <div style="height:25px"></div>
+      <button type="button" class="btn btn-danger" id="0">Protanopia</button>
+      <button type="button" class="btn btn-success" id="1">Deuteranopia</button>
+      <button type="button" class="btn btn-primary" id="2">Tritanopia</button>
+      <button type="button" class="btn btn-warning" style="background-color:black; border-color:black;" id="3">Achromatopsia</button>
+      <button type="button" class="btn btn-default" id="4">Original</button>
+      
     </div> 
+    
+    <div style="height:10px">
+      <p id="popup">diopter: 0</p>
+      </div>
+    <div style="width:550px" align="center">
+      <div style="overflow:auto; width:500px;" align="center", id="scrollbar">
+        <img src="white.png" />
+      </div> 
+      <div style="height:35px"></div>
+    </div>
+    
     <script src="options.js"></script>
   </body>
 </html>
-
