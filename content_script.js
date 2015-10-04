@@ -64,17 +64,14 @@ var apply_color_bind = function(c) {
 
 // apply_filter(2);
 chrome.storage.sync.get("click", function(data) {
-        var option = data['click'];
-        apply_color_bind(option);
-    }
-);
+    var option = data['click'];
+    apply_color_bind(option);
+});
 
-chrome.storage.sync.get("mouseup", function(data) {
-        var pixel = data['mouseup'];
-        chrome.storage.sync.get("cbhmouseup", function(data) {
-                var degree = data['cbhmouseup'];
-                apply_filter(pixel, degree);
-            }
-        );
-    }
-);
+chrome.storage.sync.get({mouseup: 0}, function(data) {
+    var pixel = data['mouseup'];
+    chrome.storage.sync.get({cbhmouseup: 0}, function(data) {
+         var degree = data['cbhmouseup'];
+         apply_filter(pixel, degree);
+    });
+});
