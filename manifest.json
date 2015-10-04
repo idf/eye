@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-
   "name": "Eye",
-  "description": "Eye Description",
+  "description": "Turn on color-blind experience inside your browser",
+  "short_name": "Turn on color-blind experience inside your browser",
   "version": "0.0.0.1",
   "browser_action": {
     "default_icon": "icon.png",
