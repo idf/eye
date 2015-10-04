@@ -11,7 +11,6 @@ function option_0() {
   }, function() {
     if(click_time == 0) refresh();
     refresh();
-    window.close();
   });
 }
 
@@ -21,7 +20,6 @@ function option_1() {
   }, function() {
     if(click_time == 0) refresh();
     refresh();
-    window.close();
   });
 }
 
@@ -31,7 +29,6 @@ function option_2() {
   }, function() {
     if(click_time == 0) refresh();
     refresh();
-    window.close();
   });
 }
 
@@ -41,7 +38,6 @@ function option_3() {
   }, function() {
     if(click_time == 0) refresh();
     refresh();
-    window.close();
   });
 }
 
@@ -51,7 +47,6 @@ function option_4() {
   }, function() {
     if(click_time == 0) refresh();
     refresh();
-    window.close();
   });
 }
 
@@ -59,8 +54,13 @@ function end() {
   var element = document.getElementById("scrollbar");
   var a = element.scrollLeft;
   var b = element.offsetWidth;
-  var c = a / b / 40;
-  show(Math.floor(c * 10));
+  var c = Math.floor(a / b / 4);
+  chrome.storage.sync.set({
+    "bar1pos": a
+  }, function() {
+  });
+  var data = document.getElementById("popup");
+  data.innerHTML = c.toString();
   chrome.storage.sync.set({
     "mouseup": c
   }, function() {
@@ -69,29 +69,53 @@ function end() {
   });
 }
 
-function begin() {
-  var element = document.getElementById("scrollbar");
+function cbhend() {
+  var element = document.getElementById("cbh");
   var a = element.scrollLeft;
   var b = element.offsetWidth;
-  var c = a / b / 4;
-  show(Math.floor(c));
+  var c = Math.floor(a / b * 9);
+  chrome.storage.sync.set({
+    "bar2pos": a
+  }, function() {
+  });
+  var data = document.getElementById("cphdata");
+  data.innerHTML = c.toString();
+  chrome.storage.sync.set({
+    "cbhmouseup": c
+  }, function() {
+    if(click_time == 0) refresh();
+    refresh();
+  });
 }
 
-function show(c) {
-  diopter = c;
-  var element = document.getElementById("popup");
-  element.innerHTML = diopter.toString();
-}
+var click_time = 0;
 
 document.getElementById("0").addEventListener("click", option_0);
 document.getElementById("1").addEventListener("click", option_1);
 document.getElementById("2").addEventListener("click", option_2);
 document.getElementById("3").addEventListener("click", option_3);
 document.getElementById("4").addEventListener("click", option_4);
+
 var text = document.getElementById("scrollbar");
-text = document.getElementById("scrollbar");
-text = document.getElementById("scrollbar");
-text.onmousedown = begin;
 text.onmouseup = end;
-var click_time = 0;
-var diopter = 0;
+chrome.storage.sync.get("mouseup", function(data) {
+        var c = data['mouseup'];
+        var t = document.getElementById("popup");
+        t.innerHTML = c.toString(); 
+        chrome.storage.sync.get("bar1pos", function(data){
+          text.scrollLeft = data['bar1pos']; 
+        });
+    }
+);
+
+var cbh = document.getElementById("cbh");
+cbh.onmouseup = cbhend;
+chrome.storage.sync.get("cbhmouseup", function(data) {
+        var c = data['cbhmouseup'];
+        var t = document.getElementById("cphdata");
+        t.innerHTML = c.toString();
+        chrome.storage.sync.get("bar2pos", function(data){
+          cbh.scrollLeft = data['bar2pos']; 
+        });
+    }
+);

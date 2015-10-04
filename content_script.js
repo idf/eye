@@ -1,11 +1,6 @@
-var apply_filter = function(pixel) {
+var apply_filter = function(pixel, degree) {
     var sheet = document.styleSheets[0];
-    sheet.addRule("html", "-webkit-filter: blur("+pixel+"px);!important;", 1);
-};
-
-var enlighten_filter = function(degree) {
-    var sheet = document.styleSheets[0];
-    sheet.addRule("html", "-webkit-filter: hue-rotate("+degree+"deg) contrast(200%) brightness(110%)!important;", 1);
+    sheet.insertRule("html{ -webkit-filter: blur("+pixel+"px) hue-rotate("+degree+"deg);}", 0);
 };
 
 /**
@@ -75,7 +70,11 @@ chrome.storage.sync.get("click", function(data) {
 );
 
 chrome.storage.sync.get("mouseup", function(data) {
-        var pixel = data['mouseup'] * 3;
-        apply_filter(pixel);
+        var pixel = data['mouseup'];
+        chrome.storage.sync.get("cbhmouseup", function(data) {
+                var degree = data['cbhmouseup'];
+                apply_filter(pixel, degree);
+            }
+        );
     }
 );
