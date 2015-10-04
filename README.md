@@ -2,7 +2,7 @@
 Chrome Extension 
 
 ## Screen shots
-![](/img/screenshot.png)
+![](/img/screenshot.jpg)
 
 ## Color Blindness Table
 
