@@ -3,7 +3,7 @@ var refresh = function(){
     click_time = click_time + 1;
     chrome.tabs.reload(tab.id);
   });
-}
+};
 
 function option_0() {
   chrome.storage.sync.set({
