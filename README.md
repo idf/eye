@@ -1,4 +1,6 @@
 # eye
+Turn on color-blind experience inside your browser
+
 Chrome Extension 
 
 ## Screen shots
